@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button *ngIf="canGoBack" defaultHref="/"></ion-back-button>
+      <ion-menu-toggle>
+        <ion-button>
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
+    </ion-buttons>
+    <ion-title> <img src="/assets/img/csa.png" alt="w"/> Cricketscore-Analysis  <img src="/assets/img/b.gif" height=50 width=50 alt="w"/><img src="/assets/img/a.gif" alt="w" height=50 width=50/> <img src="/assets/img/c.gif" height=50 width=50 alt="w"/><img src="/assets/img/d.gif" height=50 width=50 alt="w"/><img src="/assets/img/e.gif" height=50 width=50 alt="w"/><img src="/assets/img/f.gif" height=50 width=50 alt="w"/><img src="/assets/img/g.gif" height=50 width=50 alt="w"/><img src="/assets/img/h.gif" height=50 width=50 alt="w"/><img src="/assets/img/i.gif" height=50 width=50 alt="w"/><img src="/assets/img/j.gif" height=50 width=50 alt="w"/><img src="/assets/img/k.gif" height=50 width=50 alt="w"/><img src="/assets/img/l.gif" height=50 width=50 alt="w"/><img src="/assets/img/m.gif" height=50 width=50 alt="w"/><img src="/assets/img/n.gif" height=50 width=50 alt="w"/><img src="/assets/img/o.gif" height=50 width=50 alt="w"/><img src="/assets/img/q.gif" height=50 width=50 alt="w"/><img src="/assets/img/d.gif" height=50 width=50 alt="w"/><img src="/assets/img/r.png" height=50 width=50 alt="w"/><img src="/assets/img/r.png" height=50 width=50 alt="w"/><img src="/assets/img/s.png" height=50 width=50 alt="w"/><img src="/assets/img/s.png" height=50 width=50 alt="w"/><img src="/assets/img/r.png" height=50 width=50 alt="w"/><img src="/assets/img/r.png" height=50 width=50 alt="w"/>
+  </ion-title>
+  </ion-toolbar>
+</ion-header>

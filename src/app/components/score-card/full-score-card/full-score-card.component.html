@@ -1,0 +1,50 @@
+<ion-header>
+  <h2 *ngIf='match' class="vs-header text-uppercase text-center p-0">
+    <span [style.color]=match.homeTeam.teamColour>{{match.homeTeam.shortName}}</span> VS
+    <span [style.color]=match.awayTeam.teamColour>{{match.awayTeam.shortName}}</span>
+    <br>
+    <span> {{match.startDateTime | matchTime}}</span>
+  </h2>
+</ion-header>
+<ion-content *ngIf='match && scorecard' class='content'>
+  <div class='content flex-column'>
+    <div *ngFor="let inning of scorecard.innings">
+      <div [hidden]="inning.id != selectedTab">
+        <app-game-status [match]="match"></app-game-status>
+        <app-innings-score-card [match]="match" [inning]="inning"></app-innings-score-card>
+      </div>
+    </div>
+    <div class='content' [hidden]="scorecard.innings.length + 1 != selectedTab">
+      <app-commentary-container (newCommentEvent)="updateCommentCount($event)" [matchCommentary]="matchCommentary" [live]="live" [switchToTab]='switchToCommentaryTab'>
+      </app-commentary-container>
+    </div>
+    <div class='content' [hidden]="scorecard.innings.length + 2 != selectedTab">
+      <app-inning-graph>
+      </app-inning-graph>
+        <h3 class="text-center mt-5">Inning Graph</h3>
+        <app-inning-graph [matchId]="match.id" [seriesId]="match.series.id"></app-inning-graph>
+    </div>
+  </div>
+</ion-content>
+<ion-content *ngIf="scorecard == null && match">
+  <h5 class="text-center mt-5 mb-0 text-colour-primary">{{match.matchSummaryText}}</h5>
+</ion-content>
+<ion-footer>
+  <ion-toolbar mode="md" *ngIf='scorecard'>
+    <ion-segment mode="md"  (ionChange)="tabChanged($event)" value='{{scorecard.innings.length}}'>
+      <ion-segment-button mode="md"  *ngFor="let inning of scorecard.innings" value="{{inning.id}}">
+        {{inning.shortName}}
+        <ion-icon name="list-box"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button mode="md"  value="{{scorecard.innings.length + 1}}">
+        Commentary
+        <ion-icon class="commentary-icon" name="chatboxes"></ion-icon>
+        <ion-badge *ngIf="newCommentCount > 0" class="commentary-badge">{{newCommentCount}}</ion-badge>
+      </ion-segment-button>
+      <ion-segment-button mode="md" value="{{scorecard.innings.length + 2}}">
+        Overview
+        <ion-icon class="commentary-icon" name="eye"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>
